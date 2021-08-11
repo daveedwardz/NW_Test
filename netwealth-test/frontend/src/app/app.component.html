@@ -1,0 +1,23 @@
+<div class="screenContainer">
+  <div class="centeredCard">
+    <h1>Currency Converter</h1>
+    <div class="fullWidth">
+      <mat-form-field>
+        <mat-label>amount</mat-label>
+        <input type="text" matInput [ngModel]="amount | number:'1.2-2'" (change)="changeAmount($event)">
+      </mat-form-field>
+      <app-currency-picker type="from" [setValue]="fromValue" (changeCurrency)="changeCurrency($event, 'from')"></app-currency-picker>
+      <button mat-fab color="black" (click)="swapCurrencies()">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
+      <app-currency-picker type="to" [setValue]="toValue" (changeCurrency)="changeCurrency($event, 'to')"></app-currency-picker>
+    </div>
+    <div class="fullWidth resultsDiv">
+      <div *ngIf="!converting && converted > 0">
+        <b>{{ amount | number: '1.2-2'}}</b> {{ fromCurrency.description }} is
+        <b>{{ converted | number: '1.2-2' }}</b> {{ toCurrency.description }}
+      </div>
+      <div *ngIf="converting"><mat-spinner [diameter]="40"></mat-spinner></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<mat-form-field>
+  <mat-label>{{ type }}</mat-label>
+  <mat-select (selectionChange)="selectCurrency($event)" [value]="setValue">
+    <mat-option *ngFor="let currency of currency.getSortedCurrencies$(type) | async" [value]="currency.symbol">
+      <ng-container *ngIf="currency.isFavourite">
+        <b>{{ currency.symbol}} - {{ currency.description }}</b>
+      </ng-container>
+      <ng-container *ngIf="!currency.isFavourite">
+        {{ currency.symbol}} - {{ currency.description }}
+      </ng-container>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
