@@ -20,11 +20,12 @@ h1, div.fullWidth {
     flex-grow: 1;
     display: flex;
     justify-content: space-around;
-    height: 50px;
+    /* height: 50px; */
+    flex-wrap: wrap;
 }
-div.fullWidth mat-form-field, div.fullWidth app-currency-picker {
+/* div.fullWidth mat-form-field, div.fullWidth app-currency-picker {
     width: 25%;
-}
+} */
 h1 {
     font-size: 2.5em;
 }
